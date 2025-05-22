@@ -12,7 +12,7 @@
 //   useEffect(() => {
 //     const fetchEvents = async () => {
 //       try {
-//         const res = await axios.get('http://localhost:5000/api/events');
+//         const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
 //         const upcoming = res.data.filter(event =>
 //           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
 //         );
@@ -85,7 +85,7 @@
 //   useEffect(() => {
 //     const fetchEvents = async () => {
 //       try {
-//         const res = await axios.get('http://localhost:5000/api/events');
+//         const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
 //         const upcoming = res.data.filter(event =>
 //           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
 //         );
@@ -161,7 +161,7 @@
 //   useEffect(() => {
 //     const fetchEvents = async () => {
 //       try {
-//         const res = await axios.get('http://localhost:5000/api/events');
+//         const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
 //         const upcoming = res.data.filter(event =>
 //           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
 //         );
@@ -277,7 +277,7 @@
 //   useEffect(() => {
 //     const fetchEvents = async () => {
 //       try {
-//         const res = await axios.get('http://localhost:5000/api/events');
+//         const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
 //         const upcoming = res.data.filter((event) =>
 //           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
 //         );
@@ -483,7 +483,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/events');
+        const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
         const upcoming = res.data.filter((event) =>
           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
         );

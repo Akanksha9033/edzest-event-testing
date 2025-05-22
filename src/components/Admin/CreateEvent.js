@@ -39,8 +39,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `http://localhost:5000/api/events/${editingEventId}`
-//         : 'http://localhost:5000/api/events';
+//         ? `https://edzest-event-testing.onrender.com/api/events/${editingEventId}`
+//         : 'https://edzest-event-testing.onrender.com/api/events';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -93,7 +93,7 @@
 //       )}
 
 //       <a
-//         href="http://localhost:5000/api/register/download"
+//         href="https://edzest-event-testing.onrender.com/api/register/download"
 //         target="_blank"
 //         rel="noopener noreferrer"
 //         className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 mt-4 inline-block"
@@ -149,8 +149,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `http://localhost:5000/api/events/${editingEventId}`
-//         : 'http://localhost:5000/api/events';
+//         ? `https://edzest-event-testing.onrender.com/api/events/${editingEventId}`
+//         : 'https://edzest-event-testing.onrender.com/api/events';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -204,7 +204,7 @@
 //       {/* ✅ Download Buttons for Excel Files */}
 //       <div className="mt-6 space-y-2">
 //         <a
-//           href="http://localhost:5000/api/register/download"
+//           href="https://edzest-event-testing.onrender.com/api/register/download"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //           className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 inline-block w-full text-center"
@@ -213,7 +213,7 @@
 //         </a>
 
 //         <a
-//           href="http://localhost:5000/api/register/users/download"
+//           href="https://edzest-event-testing.onrender.com/api/register/users/download"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //           className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 inline-block w-full text-center"
@@ -257,7 +257,7 @@
 
 //   const fetchEvents = async () => {
 //     try {
-//       const res = await axios.get('http://localhost:5000/api/events');
+//       const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
 //       setEventsList(res.data);
 //     } catch (error) {
 //       console.error('Error fetching events:', error);
@@ -285,8 +285,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `http://localhost:5000/api/events/${editingEventId}`
-//         : 'http://localhost:5000/api/events';
+//         ? `https://edzest-event-testing.onrender.com/api/events/${editingEventId}`
+//         : 'https://edzest-event-testing.onrender.com/api/events';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -318,7 +318,7 @@
 //     if (window.confirm('Are you sure you want to delete this event?')) {
 //       try {
 //         const token = localStorage.getItem('token');
-//         await axios.delete(`http://localhost:5000/api/events/${id}`, {
+//         await axios.delete(`https://edzest-event-testing.onrender.com/api/events/${id}`, {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -376,7 +376,7 @@
 //       {/* ✅ Download Buttons */}
 //       <div className="mt-6 space-y-2">
 //         <a
-//           href="http://localhost:5000/api/register/download"
+//           href="https://edzest-event-testing.onrender.com/api/register/download"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //           className="bg-green-600 text-white text-sm px-3 py-1 rounded hover:bg-green-700 inline-block w-full text-center"
@@ -385,7 +385,7 @@
 //         </a>
 
 //         <a
-//           href="http://localhost:5000/api/register/users/download"
+//           href="https://edzest-event-testing.onrender.com/api/register/users/download"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //           className="bg-purple-600 text-white text-sm px-3 py-1 rounded hover:bg-purple-700 inline-block w-full text-center"
@@ -426,7 +426,7 @@
 
 //   const fetchEvents = async () => {
 //     try {
-//       const res = await axios.get('http://localhost:5000/api/events');
+//       const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
 //       console.log("📋 All Events from DB:", res.data);
 //       setEventsList(res.data);
 //     } catch (error) {
@@ -455,8 +455,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `http://localhost:5000/api/events/${editingEventId}`
-//         : 'http://localhost:5000/api/events';
+//         ? `https://edzest-event-testing.onrender.com/api/events/${editingEventId}`
+//         : 'https://edzest-event-testing.onrender.com/api/events';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -489,7 +489,7 @@
 //     if (window.confirm('Are you sure you want to delete this event?')) {
 //       try {
 //         const token = localStorage.getItem('token');
-//         await axios.delete(`http://localhost:5000/api/events/${id}`, {
+//         await axios.delete(`https://edzest-event-testing.onrender.com/api/events/${id}`, {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -550,7 +550,7 @@
 //       {/* ✅ Download Buttons */}
 //       <div className="mt-6 flex justify-center gap-4">
 //   <a
-//     href="http://localhost:5000/api/register/download"
+//     href="https://edzest-event-testing.onrender.com/api/register/download"
 //     target="_blank"
 //     rel="noopener noreferrer"
 //     className="bg-green-600 text-white text-sm px-2 py-3 rounded hover:bg-green-700 w-1/4 text-center no-underline"
@@ -560,7 +560,7 @@
 //   </a>
 
 //   <a
-//     href="http://localhost:5000/api/register/users/download"
+//     href="https://edzest-event-testing.onrender.com/api/register/users/download"
 //     target="_blank"
 //     rel="noopener noreferrer"
 //     className="bg-[#4748ac] text-white text-sm p2-3 py-3 rounded bg-[#4748ac] w-1/4 text-center no-underline"
@@ -605,7 +605,7 @@ const CreateEvent = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/events');
+      const res = await axios.get('https://edzest-event-testing.onrender.com/api/events');
       console.log("📋 All Events from DB:", res.data);
       setEventsList(res.data);
     } catch (error) {
@@ -669,8 +669,8 @@ const CreateEvent = () => {
     try {
       const token = localStorage.getItem('token');
       const url = isEditing
-        ? `http://localhost:5000/api/events/${editingEventId}`
-        : 'http://localhost:5000/api/events';
+        ? `https://edzest-event-testing.onrender.com/api/events/${editingEventId}`
+        : 'https://edzest-event-testing.onrender.com/api/events';
       const method = isEditing ? 'put' : 'post';
 
       const res = await axios[method](url, event, {
@@ -703,7 +703,7 @@ const CreateEvent = () => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:5000/api/events/${id}`, {
+        await axios.delete(`https://edzest-event-testing.onrender.com/api/events/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -762,7 +762,7 @@ const CreateEvent = () => {
 
       <div className="mt-6 flex justify-center gap-4">
         <a
-          href="http://localhost:5000/api/register/download"
+          href="https://edzest-event-testing.onrender.com/api/register/download"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-600 text-white text-sm px-2 py-3 rounded hover:bg-green-700 w-1/4 text-center no-underline"
@@ -772,7 +772,7 @@ const CreateEvent = () => {
         </a>
 
         <a
-          href="http://localhost:5000/api/register/users/download"
+          href="https://edzest-event-testing.onrender.com/api/register/users/download"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[#4748ac] text-white text-sm p2-3 py-3 rounded bg-[#4748ac] w-1/4 text-center no-underline"

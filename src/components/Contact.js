@@ -22,7 +22,7 @@ const Contact = () => {
     setIsSent(true); // Disable form after submission
 
     try {
-      await axios.post("https://full-stack-project-1-vwwb.onrender.com/api/contact", formData);
+      await axios.post("https://edzest-event-testing.onrender.com/api/contact", formData);
       setStatus("Thank you! We will get back to you soon.");
       setFormData({ fullName: "", email: "", phoneNumber: "", message: "" });
       setIsSent(false); // Re-enable form for future submissions
