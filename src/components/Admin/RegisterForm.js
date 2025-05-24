@@ -51,11 +51,17 @@ const RegisterForm = ({ event, onClose }) => {
       alert("🎉 Registered successfully!");
       onClose();
     } catch (error) {
-      console.error("Registration failed:", error);
-      alert("Registration failed");
-    } finally {
-      setLoading(false);
-    }
+  console.error("🔥 AXIOS ERROR:", error.message);
+  console.log("📄 Full Axios Error Object:", error);
+  if (error.response) {
+    console.error("🧾 Server responded with:", error.response.status, error.response.data);
+  } else if (error.request) {
+    console.error("📡 No response received. Request:", error.request);
+  } else {
+    console.error("❗ Something else went wrong:", error.message);
+  }
+  alert("Registration failed");
+}
   };
 
   return (
