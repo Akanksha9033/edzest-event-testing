@@ -21,9 +21,7 @@ app.use(cors({
     'https://edzest-event-testing.vercel.app',
     'https://edzest-event-testing-git-master-akanksha9033s-projects.vercel.app',
     'https://edzest-event-testing-mpblmrujr-akanksha9033s-projects.vercel.app',
-    'https://vercel.com/akanksha9033s-projects/edzest-event-testing/BJCo3o9ApXpB3m1M2YCzbwmr9zo8'
-
-
+    'https://edzest-event-testing-leqpnbkir-akanksha9033s-projects.vercel.app' // ✅ Actual frontend origin
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
