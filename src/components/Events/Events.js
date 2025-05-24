@@ -483,7 +483,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('https://edzest-event-testing-2.onrender.com');
+        const res = await axios.get('https://edzest-event-testing-2.onrender.com/api/events')
         const upcoming = res.data.filter((event) =>
           dayjs(event.date).isAfter(dayjs().subtract(1, 'day'))
         );
