@@ -28,6 +28,8 @@ const transporter = nodemailer.createTransport({
 
 // ✅ POST: Register for an event
 router.post('/', upload.none(), async (req, res) => {
+  console.log("📥 Register endpoint hit");
+    console.log("➡️  Request body:", req.body);
   try {
     const {
       name = '',
@@ -145,13 +147,15 @@ router.post('/', upload.none(), async (req, res) => {
     };
 
     await transporter.sendMail(userMail);
+    console.log("✅ User email sent");
+
     await transporter.sendMail(adminMail);
 
     res.status(200).json({ message: 'Registration successful, emails sent, data saved.' });
   } catch (err) {
-    console.error('❌ Registration Error:', err);
-    res.status(500).json({ message: 'Server error' });
-  }
+  console.error('❌ Registration Error:', err); // ✅ Full error printed
+  res.status(500).json({ message: 'Server error' });
+}
 });
 
 module.exports = router;
