@@ -16,7 +16,11 @@ app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use(express.json({ limit: '10mb' }));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://edzest-event-testing-ivgw48bmv-akanksha9033s-projects.vercel.app',],
+  origin: [
+    'http://localhost:3000',
+    'https://edzest-event-testing-git-master-akanksha9033s-projects.vercel.app' // ✅ Your correct frontend
+   
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 }));
