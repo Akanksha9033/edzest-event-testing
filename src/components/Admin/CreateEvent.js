@@ -39,8 +39,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `https://edzest-event-testing-1.onrender.com/api/events/${editingEventId}`
-//         : 'https://edzest-event-testing-1.onrender.com/api/events';
+//         ? `https://edzest-event-testing-2.onrender.com/${editingEventId}`
+//         : 'https://edzest-event-testing-2.onrender.com';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -149,8 +149,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `https://edzest-event-testing-1.onrender.com/api/events/${editingEventId}`
-//         : 'https://edzest-event-testing-1.onrender.com/api/events';
+//         ? `https://edzest-event-testing-2.onrender.com/${editingEventId}`
+//         : 'https://edzest-event-testing-2.onrender.com';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -257,7 +257,7 @@
 
 //   const fetchEvents = async () => {
 //     try {
-//       const res = await axios.get('https://edzest-event-testing-1.onrender.com/api/events');
+//       const res = await axios.get('https://edzest-event-testing-2.onrender.com');
 //       setEventsList(res.data);
 //     } catch (error) {
 //       console.error('Error fetching events:', error);
@@ -285,8 +285,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `https://edzest-event-testing-1.onrender.com/api/events/${editingEventId}`
-//         : 'https://edzest-event-testing-1.onrender.com/api/events';
+//         ? `https://edzest-event-testing-2.onrender.com/${editingEventId}`
+//         : 'https://edzest-event-testing-2.onrender.com';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -318,7 +318,7 @@
 //     if (window.confirm('Are you sure you want to delete this event?')) {
 //       try {
 //         const token = localStorage.getItem('token');
-//         await axios.delete(`https://edzest-event-testing-1.onrender.com/api/events/${id}`, {
+//         await axios.delete(`https://edzest-event-testing-2.onrender.com/${id}`, {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -426,7 +426,7 @@
 
 //   const fetchEvents = async () => {
 //     try {
-//       const res = await axios.get('https://edzest-event-testing-1.onrender.com/api/events');
+//       const res = await axios.get('https://edzest-event-testing-2.onrender.com');
 //       console.log("📋 All Events from DB:", res.data);
 //       setEventsList(res.data);
 //     } catch (error) {
@@ -455,8 +455,8 @@
 //     try {
 //       const token = localStorage.getItem('token');
 //       const url = isEditing
-//         ? `https://edzest-event-testing-1.onrender.com/api/events/${editingEventId}`
-//         : 'https://edzest-event-testing-1.onrender.com/api/events';
+//         ? `https://edzest-event-testing-2.onrender.com/${editingEventId}`
+//         : 'https://edzest-event-testing-2.onrender.com';
 //       const method = isEditing ? 'put' : 'post';
 
 //       const res = await axios[method](url, event, {
@@ -489,7 +489,7 @@
 //     if (window.confirm('Are you sure you want to delete this event?')) {
 //       try {
 //         const token = localStorage.getItem('token');
-//         await axios.delete(`https://edzest-event-testing-1.onrender.com/api/events/${id}`, {
+//         await axios.delete(`https://edzest-event-testing-2.onrender.com/${id}`, {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -605,7 +605,7 @@ const CreateEvent = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('https://edzest-event-testing-1.onrender.com/api/events');
+      const res = await axios.get('https://edzest-event-testing-2.onrender.com');
       console.log("📋 All Events from DB:", res.data);
       setEventsList(res.data);
     } catch (error) {
@@ -669,8 +669,8 @@ const CreateEvent = () => {
     try {
       const token = localStorage.getItem('token');
       const url = isEditing
-        ? `https://edzest-event-testing-1.onrender.com/api/events/${editingEventId}`
-        : 'https://edzest-event-testing-1.onrender.com/api/events';
+        ? `https://edzest-event-testing-2.onrender.com/${editingEventId}`
+        : 'https://edzest-event-testing-2.onrender.com';
       const method = isEditing ? 'put' : 'post';
 
       const res = await axios[method](url, event, {
@@ -703,7 +703,7 @@ const CreateEvent = () => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`https://edzest-event-testing-1.onrender.com/api/events/${id}`, {
+        await axios.delete(`https://edzest-event-testing-2.onrender.com/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
