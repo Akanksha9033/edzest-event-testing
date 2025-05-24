@@ -18,8 +18,10 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://edzest-event-testing-mpblmrujr-akanksha9033s-projects.vercel.app' // ✅ Your correct frontend
-   
+    'https://edzest-event-testing.vercel.app',
+    'https://edzest-event-testing-git-master-akanksha9033s-projects.vercel.app',
+    'https://edzest-event-testing-mpblmrujr-akanksha9033s-projects.vercel.app'
+
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
