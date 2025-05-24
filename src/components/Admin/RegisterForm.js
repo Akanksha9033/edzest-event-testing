@@ -1,4 +1,3 @@
-// src/components/Admin/RegisterForm.js
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -7,7 +6,7 @@ const RegisterForm = ({ event, onClose }) => {
     name: "",
     email: "",
     phone: "",
-    remarks: "", // ✅ Added remarks field
+    remarks: "",
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -20,19 +19,40 @@ const RegisterForm = ({ event, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      await axios.post("https://edzest-event-testing-1.onrender.com/api/register", {
-        ...formData,
-        eventTitle: event.title,
-        eventDate: event.date,
-      });
+      const data = new FormData();
+      data.append("name", formData.name);
+      data.append("email", formData.email);
+      data.append("phone", formData.phone);
+      data.append("remarks", formData.remarks);
+
+      // ✅ Include full event details
+      data.append("eventTitle", event.title);
+      data.append("eventDate", event.date);
+      data.append("eventTime", event.time);
+      data.append("eventSpeaker", event.speaker);
+      data.append("eventDescription", event.description);
+      data.append("eventLink", event.link);       // ✅ Zoom link
+      data.append("linkedin", event.linkedin);    // ✅ LinkedIn
+
+      await axios.post(
+        "https://edzestweb-3.onrender.com/api/register",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
       setSuccess(true);
-      setFormData({ name: '', email: '', phone: '', remarks: '' }); // ✅ Reset remarks too
+      setFormData({ name: "", email: "", phone: "", remarks: "" });
       alert("🎉 Registered successfully!");
       onClose();
     } catch (error) {
+      console.error("Registration failed:", error);
       alert("Registration failed");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -40,17 +60,41 @@ const RegisterForm = ({ event, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg max-w-md w-full relative shadow-lg">
+      <div className="bg-white p-6 rounded-lg max-w-md w-full relative shadow-lg overflow-y-auto max-h-[95vh]">
         <button
           className="absolute top-2 right-3 text-gray-500 hover:text-red-500"
           onClick={onClose}
         >
           ✕
         </button>
-        <h3 className="text-xl font-bold mb-4">Register for {event.title}</h3>
 
+        {/* ✅ Event Info: Image, Description, LinkedIn */}
+        <div className="mb-4">
+          <img
+            src={event.image}
+            alt={event.title}
+            className="w-full h-40 object-cover rounded-lg mb-3 border border-gray-300"
+          />
+          <p className="text-sm text-gray-700 mb-1">
+            <strong>Description:</strong> {event.description}
+          </p>
+          <p className="text-sm">
+            <strong>LinkedIn:</strong>{" "}
+            <a
+              href={event.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+              {event.linkedin}
+            </a>
+          </p>
+          <hr className="my-4" />
+        </div>
+
+        {/* ✅ Registration Form */}
         {success ? (
-          <p className="text-green-600 font-medium">
+          <p className="text-green-600 font-medium text-center">
             Successfully registered! ✅
           </p>
         ) : (
@@ -90,6 +134,7 @@ const RegisterForm = ({ event, onClose }) => {
               className="w-full border p-2 rounded"
               rows={3}
             ></textarea>
+
             <button
               type="submit"
               disabled={loading}
