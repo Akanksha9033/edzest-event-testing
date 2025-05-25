@@ -1,1 +1,20 @@
- 
+{
+  "short_name": "Edzest",
+  "name": "Edzest Event App",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4748ac",
+  "icons": [
+    {
+      "src": "Edlogo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "Edlogo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
