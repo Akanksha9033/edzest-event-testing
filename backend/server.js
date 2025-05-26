@@ -22,6 +22,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://edzest-event-testing.vercel.app', // ✅ your allowed frontend
+    'https://edzest-website-3.vercel.app', // ✅ your allowed frontend
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
