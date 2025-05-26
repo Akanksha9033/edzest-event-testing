@@ -18,7 +18,7 @@ const CreateEvent = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/events");
+      const res = await axios.get("https://edzest-event-testing-4.onrender.com/api/events");
       setEvents(res.data);
     } catch (err) {
       console.error("Error fetching events:", err);
@@ -46,12 +46,12 @@ const CreateEvent = () => {
       );
 
       if (editingId) {
-        await axios.put(`http://localhost:5000/api/events/${editingId}`, payload, {
+        await axios.put(`https://edzest-event-testing-4.onrender.com/api/events/${editingId}`, payload, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("Event updated successfully!");
       } else {
-        await axios.post("http://localhost:5000/api/events", payload, {
+        await axios.post("https://edzest-event-testing-4.onrender.com/api/events", payload, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("Event created successfully!");
@@ -93,7 +93,7 @@ const CreateEvent = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/events/${id}`);
+      await axios.delete(`https://edzest-event-testing-4.onrender.com/api/events/${id}`);
       fetchEvents();
     } catch (err) {
       console.error("Error deleting event:", err);
