@@ -68,7 +68,7 @@ const Contact = mongoose.model("Contact", ContactSchema);
 // ------------------ ROUTES ------------------
 
 // ✅ Event Routes for create/edit/delete/fetch
-const eventRoutes = require("./routes/eventRoutes");
+const eventRoutes = require("../routes/eventRoutes");
 app.use("/api/events", eventRoutes);
 
 // ✅ Register Routes for user registration + excel download
