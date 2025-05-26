@@ -177,10 +177,11 @@ import RefundPolicy from "./components/Refund Policy";
 import JoinNowForm from "./components/Joinnow";
 import WhatsAppChat from "./components/Whatsappchat";
 import FlashMain from "./FlashcardApp/FlashMain";
-import CreateEvent from "./components/Admin/CreateEvent";
+import CreateEvent from "./components/events/CreateEvent";
 import Acp from "./components/Acp";
 import Pmp from "./components/Pmp";
 import PMPTrainingHighlights from "./components/PMPTrainingHighlights"; 
+import EventRegistrationPage from "./components/pages/EventRegistrationPage";
 
 
 // ✅ Importing Services & Workshop Components
@@ -194,7 +195,10 @@ import Resume from "./components/Services/CareerDevelopment/Resume";
 import Interview from "./components/Services/CareerDevelopment/Interview";
 import TrainingServices from "./components/Services/TrainingServices/TrainingServices";
 import ProjectFoundation from "./components/Services/TrainingServices/ProjectFoundation";
-import Events from "./components/Events/Events";
+import EventsPage from "./components/pages/EventsPage";
+import CreateEventPage from "./components/pages/CreateEventPage";
+
+
 
 // ✅ Importing Documentation Components
 import Docs from "./components/ProjectDocs/pages/Docs";
@@ -273,7 +277,10 @@ function App() {
           <Route path="/refundpolicy" element={<RefundPolicy />} />
           <Route path="/join-us" element={<JoinNowForm />} />
           <Route path="/create-event" element={<CreateEvent />} />
-          <Route path="/events" element={<Events />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/create-event" element={<CreateEventPage />} />
+          <Route path="/register/:eventId" element={<EventRegistrationPage />} />
+
 
           {/* ✅ Drag & Drop Quiz Routes */}
           <Route

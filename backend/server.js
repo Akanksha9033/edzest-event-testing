@@ -1,6 +1,3 @@
-
-
-
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -10,7 +7,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
+
 app.use('/data', express.static(path.join(__dirname, 'data')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// ✅ Event & Registration Models (required for event feature)
+const Event = require("./models/Event");
+const Registration = require("./models/Registration");
 
 // Middleware
 app.use(express.json({ limit: '10mb' }));
@@ -18,7 +21,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://edzest-event-testing.vercel.app', // ✅ this is the CORRECT one
+    'https://edzest-event-testing.vercel.app', // ✅ your allowed frontend
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
@@ -64,8 +67,15 @@ const Contact = mongoose.model("Contact", ContactSchema);
 
 // ------------------ ROUTES ------------------
 
-const eventRoutes = require("./routes/eventroutes");
+// ✅ Event Routes for create/edit/delete/fetch
+const eventRoutes = require("./routes/eventRoutes");
 app.use("/api/events", eventRoutes);
+
+// ✅ Register Routes for user registration + excel download
+const registerRoute = require('./routes/registrationRoutes');
+
+
+app.use("/api/register", registerRoute);
 
 // Resume upload config using Multer
 const storage = multer.diskStorage({
@@ -180,13 +190,8 @@ app.get("/check-db", async (req, res) => {
   }
 });
 
-const registerRoute = require('./routes/registerRoute');
-app.use('/api/register', registerRoute);
-
-// 🔔 Reminder scheduler - placed right before server starts
-
-
 // ------------------ START SERVER ------------------
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+

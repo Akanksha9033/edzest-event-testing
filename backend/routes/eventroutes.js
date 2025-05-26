@@ -1,148 +1,107 @@
+// const express = require('express');
+// const router = express.Router();
+// const multer = require("multer");
+// const eventController = require('../controllers/eventController');
 
+// // ✅ Use multer to handle file upload (e.g., wallpaper image)
+// const storage = multer.memoryStorage(); // use diskStorage if saving to server
+// const upload = multer({ storage });
+
+// // ✅ POST - Create Event with image upload
+// router.post('/', upload.single("wallpaper"), eventController.createEvent);
+
+// // ✅ GET - Fetch all events
+// router.get('/', eventController.getAllEvents);
+
+// // ✅ PUT - Update an event
+// router.put('/:id', eventController.updateEvent);
+
+// // ✅ DELETE - Delete an event
+// router.delete('/:id', eventController.deleteEvent);
+
+
+// // ✅ Export router
+// module.exports = router;
 
 // const express = require('express');
 // const router = express.Router();
-// const Event = require('../models/Event');
+// const multer = require("multer");
+// const eventController = require('../controllers/eventController');
+// const Event = require('../models/Event'); // ✅ Required to fetch single event
 
-// // Dummy middleware for testing — REMOVE when real auth is added
-// const verifyToken = (req, res, next) => next();
-// const verifyAdmin = (req, res, next) => next();
+// // ✅ Use multer to handle file upload
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage });
 
-// // @route   POST /api/events
-// // @desc    Create a new event (admin only)
-// router.post('/', verifyToken, verifyAdmin, async (req, res) => {
-//   try {
-//     const newEvent = new Event(req.body);
-//     await newEvent.save();
-//     res.status(201).json({ message: 'Event created successfully', event: newEvent });
-//   } catch (error) {
-//     res.status(500).json({ message: 'Failed to create event', error });
-//   }
-// });
+// // ✅ POST - Create Event
+// router.post('/', upload.single("wallpaper"), eventController.createEvent);
 
-// // @route   GET /api/events
-// // @desc    Get all events
-// router.get('/', async (req, res) => {
-//   try {
-//     const events = await Event.find().sort({ date: 1 });
-//     res.status(200).json(events);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Failed to fetch events', error });
-//   }
-// });
+// // ✅ GET - Fetch all events
+// router.get('/', eventController.getAllEvents);
 
+// // ✅ GET - Fetch single event by ID
 // router.get('/:id', async (req, res) => {
 //   try {
 //     const event = await Event.findById(req.params.id);
 //     if (!event) {
 //       return res.status(404).json({ message: 'Event not found' });
 //     }
-//     res.status(200).json(event);
+//     res.json(event);
 //   } catch (err) {
-//     res.status(500).json({ message: 'Server error', error: err.message });
+//     res.status(500).json({ message: err.message });
 //   }
 // });
 
-// // @route   DELETE /api/events/:id
-// // @desc    Delete an event by ID
-// router.delete('/:id', verifyToken, verifyAdmin, async (req, res) => {
-//   try {
-//     console.log('Attempting to delete event with ID:', req.params.id);
-//     const deleted = await Event.findByIdAndDelete(req.params.id);
-//     if (!deleted) {
-//       console.warn('No event found with that ID.');
-//       return res.status(404).json({ message: 'Event not found' });
-//     }
-//     console.log('✅ Event deleted:', deleted);
-//     res.status(200).json({ message: 'Event deleted successfully' });
-//   } catch (error) {
-//     console.error('❌ Delete error:', error);
-//     res.status(500).json({ message: 'Server error during deletion' });
-//   }
-// });
+// // ✅ PUT - Update event
+// router.put('/:id', eventController.updateEvent);
+
+// // ✅ DELETE - Delete event
+// router.delete('/:id', eventController.deleteEvent);
 
 // module.exports = router;
+
+
 const express = require('express');
 const router = express.Router();
+const multer = require("multer");
+const eventController = require('../controllers/eventController');
 const Event = require('../models/Event');
 
-// Dummy middleware for testing — REMOVE when real auth is added
-const verifyToken = (req, res, next) => next();
-const verifyAdmin = (req, res, next) => next();
-
-// @route   POST /api/events
-// @desc    Create a new event (admin only)
-router.post('/', verifyToken, verifyAdmin, async (req, res) => {
-  try {
-    const newEvent = new Event(req.body);
-    await newEvent.save();
-    res.status(201).json({ message: 'Event created successfully', event: newEvent });
-  } catch (error) {
-    res.status(500).json({ message: 'Failed to create event', error });
-  }
+// ✅ Fix: use diskStorage so file gets saved to /uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    const uniqueName = Date.now() + "_" + file.originalname;
+    cb(null, uniqueName);
+  },
 });
+const upload = multer({ storage });
 
-// @route   GET /api/events
-// @desc    Get all events
-router.get('/', async (req, res) => {
-  try {
-    const events = await Event.find().sort({ date: 1 });
-    res.status(200).json(events);
-  } catch (error) {
-    res.status(500).json({ message: 'Failed to fetch events', error });
-  }
-});
+// ✅ POST - Create Event
+router.post('/', upload.single("wallpaper"), eventController.createEvent);
 
-// @route   GET /api/events/:id
-// @desc    Get a single event by ID
+// ✅ GET - All Events
+router.get('/', eventController.getAllEvents);
+
+// ✅ GET - Single Event
 router.get('/:id', async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
-    if (!event) {
-      return res.status(404).json({ message: 'Event not found' });
-    }
-    res.status(200).json(event);
+    if (!event) return res.status(404).json({ message: 'Event not found' });
+    res.json(event);
   } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
-// ✅ @route   PUT /api/events/:id
-// ✅ @desc    Update an event by ID
-router.put('/:id', verifyToken, verifyAdmin, async (req, res) => {
-  try {
-    const updated = await Event.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true
-    });
+// ✅ PUT - Update Event
+// router.put('/:id', eventController.updateEvent);
 
-    if (!updated) {
-      return res.status(404).json({ message: 'Event not found for update' });
-    }
+router.put('/:id', upload.single("wallpaper"), eventController.updateEvent);
 
-    res.status(200).json({ message: 'Event updated successfully', event: updated });
-  } catch (error) {
-    console.error('❌ Update error:', error);
-    res.status(500).json({ message: 'Server error during update' });
-  }
-});
-
-// @route   DELETE /api/events/:id
-// @desc    Delete an event by ID
-router.delete('/:id', verifyToken, verifyAdmin, async (req, res) => {
-  try {
-    console.log('Attempting to delete event with ID:', req.params.id);
-    const deleted = await Event.findByIdAndDelete(req.params.id);
-    if (!deleted) {
-      console.warn('No event found with that ID.');
-      return res.status(404).json({ message: 'Event not found' });
-    }
-    console.log('✅ Event deleted:', deleted);
-    res.status(200).json({ message: 'Event deleted successfully' });
-  } catch (error) {
-    console.error('❌ Delete error:', error);
-    res.status(500).json({ message: 'Server error during deletion' });
-  }
-});
+// ✅ DELETE - Delete Event
+router.delete('/:id', eventController.deleteEvent);
 
 module.exports = router;
